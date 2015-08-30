@@ -33,7 +33,10 @@
 *.autosave
 
 # 3rd Party Libraries
-Sources/3rdParty/*/
+Sources/3rdParty/*
+
+# Build Folder
+Builds/*
 
 # Automatic Test Tests.txt File 
 Sources/AutomaticTesting/Tests.txt
