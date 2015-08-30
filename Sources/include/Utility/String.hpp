@@ -1,0 +1,116 @@
+#ifndef OPENPP_UTILITY_STRING_H_
+#define OPENPP_UTILITY_STRING_H_
+
+/***************************\
+ * Usage: Platform independent Expansion of std::string
+ * Date: 2nd February 2015
+ * Author: Stefan Kreiner
+ * _______________________________
+ *
+ * Notes:
+ *  - Not Thread-Save
+ *
+\**************************/
+
+#include <string>
+#include <vector>
+
+namespace Openpp
+{
+namespace Utility
+{
+
+
+//// Splits the String into a Vector of Strings with a defined Length
+/// If String.size() % Length is not 0 the last String has less Elements
+std::vector<std::string> Split(const std::string& rString, unsigned int Length, const std::string& rEnding = "");
+
+//// Splits the String into a Vector of Strings
+std::vector<std::string> Explode(const std::string& rString, const std::string& rDelimiter, int SearchStart = 0);
+
+//// Splits the String into a Vector of Strings, but doesn't erase delimiter
+std::vector<std::string> SoftExplode(const std::string& rString, const std::string& rDelimiter, int SearchStart = 0);
+
+//// Takes the StringVector and Connects its Elements by "Delimiter"
+std::string Implode(const std::vector<std::string>& rvString, const std::string& rDelimiter = "");
+
+
+//// Returns a String repeated RepeatCount times
+std::string Repeat(const std::string& rString, unsigned int RepeatCount);
+
+//// Removes TrimChars from both sides of the String
+/// Modifies the content of rString
+void Trim(std::string& rString, const std::string& rTrimChars = "\0\t\n\x0B\r ");
+
+/// Returns the String in reversed Order
+std::string Reverse(const std::string& rString);
+
+
+//// insert "Sequence" before each Pattern
+/// Modifies the content of rString
+void InsertBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence);
+
+//// Make sure "Sequence" appears before each Pattern
+/// Modifies the content of rString
+void HaveBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rSequence);
+
+//// Make sure "Sequence" appears before each Pattern
+/// Modifies the content of rString
+void HaveCharsBeforePattern(std::string& rString, const std::string& rPattern, const std::string& rChars, char rInsert);
+
+
+//// Replaces all occurences of 'Char' with 'Replaces'
+/// Modifies the content of rString
+void ReplaceChar(std::string& rString, char Char, char Replace);
+
+//// Replaces all occurences of 'Char' with 'Replaces'
+/// Modifies the content of rString
+/// if rReplaces.length() < rChars.length() the last characters will be replaced with " "
+void ReplaceChars(std::string& rString, const std::string& rChars, const std::string& rReplaces);
+void ReplaceChars(std::string& rString, const std::string& rChars, std::string& rReplaces);
+
+//// Replaces all occurences of Pattern with Replace
+/// Modifies the content of rString
+void ReplacePattern(std::string& rString, const std::string& rPattern, const std::string& rReplace);
+
+
+//// Count the Appearences of Char
+/// Case Sensetive
+unsigned int CountChar(const std::string& rString, char Char);
+
+//// Count the Sum of appearences of the Chars
+/// Case Sensetive
+unsigned int CountChars(const std::string& rString, const std::string& rChars);
+
+//// Count the Appearences of Pattern
+/// Case Sensetive
+unsigned int CountPattern(const std::string& rString, const std::string& rPattern);
+
+//// Returns true if rString ends with rEnd
+bool EndsWith(const std::string& rString, const std::string& rEnd);
+
+//// Returns true if rString starts with rStart
+bool StartsWith(const std::string& rString, const std::string& rStart);
+
+//// Returns true if rString starts with rStart
+bool HasPatternAtPosition(const std::string& rString, const std::string& rPattern, unsigned int position);
+
+
+//// Returns true if there are Only Letters in the String
+bool HasOnlyLetters(const std::string& rString);
+
+//// Returns true if there are Only Numbers in the String
+bool HasOnlyNumbers(const std::string& rString);
+
+//// Returns true if there is at least 1 Letter in the String
+bool HasLetters(const std::string& rString);
+
+//// Returns true if there is at least 1 Number in the String
+bool HasNumbers(const std::string& rString);
+
+} // namespace Types
+} // namespace Openpp
+
+#include "String.inl"
+
+#endif /// OPENPP_UTILITY_STRING_H_

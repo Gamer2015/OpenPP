@@ -1,0 +1,35 @@
+#-------------------------------------
+# Currently used CMake Version
+#-------------------------------------
+cmake_minimum_required(VERSION 3.0)
+
+#-------------------------------------
+# Base Settings
+#-------------------------------------
+set(BASE_PATH "D:/Development/GitHub/OpenPP/Sources")
+
+#-------------------------------------
+# Compiler Settings
+#-------------------------------------
+set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11")
+
+
+#-------------------------------------
+# Openpp Compiler Paths
+#-------------------------------------
+INCLUDE_DIRECTORIES(${BASE_PATH}/include)
+LINK_DIRECTORIES(${BASE_PATH}/lib)
+
+
+#-------------------------------------
+# 3rdParty Compiler Paths
+#-------------------------------------
+include(${BASE_PATH}/3rdParty/3rdParties.txt)
+
+
+#-------------------------------------
+# Output Directories
+#-------------------------------------
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${BASE_PATH}/lib)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${BASE_PATH}/bin)
